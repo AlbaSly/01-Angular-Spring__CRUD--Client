@@ -1,0 +1,20 @@
+<!-- CONTAINER -->
+<div class="bg-gray-200 p-4 rounded-md drop-shadow-md hover:-translate-y-2 hover:drop-shadow-2xl flex flex-col justify-between h-72">
+    <!-- TITLE -->
+    <h3 class="text-red-400 text-2xl text-center">{{tutorial.title}}</h3>
+    <!-- DESCRIPTIVE LIST -->
+    <dl class="my-2 flex flex-col gap-y-2">
+        <!-- WRAPPER FOR INFO-->
+        <div>
+            <dt class="text-gray-500 font-medium">Description</dt>
+            <dd>{{tutorial.description}}</dd>
+        </div>
+        <!-- WRAPPER FOR STATUS -->
+        <div>
+            <dt class="text-gray-500 font-medium">Status</dt>
+        <dd class="border-b-2 inline-block font-semibold" [ngClass]="{'border-b-green-500': tutorial.published, 'border-b-red-500': !tutorial.published}">{{tutorial.published ? "Published" : "Unpublished"}}</dd>
+        </div>
+    </dl>
+    <!-- BUTTON -->
+    <button (click)="viewTutorialInfo();" class="my-2 block p-2 mx-auto bg-emerald-500 hover:bg-emerald-600 rounded-md text-white font-semibold">Click Me</button>
+</div>

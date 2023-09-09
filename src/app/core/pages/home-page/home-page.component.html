@@ -1,0 +1,15 @@
+<div *ngIf="loading" class="mx-auto flex flex-col items-center justify-center">
+    <app-spinner></app-spinner>
+    <span class="text-center text-xl font-semibold text-white">Fetching Data</span>
+</div>
+
+<ng-container *ngIf="!loading">
+    <app-section-title title="Tutorials"></app-section-title>
+
+    <div class="mx-auto my-4 flex flex-row-reverse justify-center gap-x-4 items-center">
+        <label for="published" class="text-white">Only published tutorials</label>
+        <input [(ngModel)]="showPublished" (change)="onChangePublishedList($event);" type="checkbox" name="published" class="w-6 h-6 bg-orange-500">
+    </div>
+
+    <app-tutorials-list [tutorials]="tutorialsList"></app-tutorials-list>
+</ng-container>

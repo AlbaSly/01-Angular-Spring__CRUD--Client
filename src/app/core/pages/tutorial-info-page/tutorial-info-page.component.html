@@ -1,0 +1,19 @@
+<div *ngIf="loading" class="mx-auto flex flex-col items-center justify-center">
+    <app-spinner></app-spinner>
+    <span class="text-center text-xl font-semibold text-white">Fetching Data</span>
+</div>
+
+<app-section-title *ngIf="!loading" [title]="tutorial.title"></app-section-title>
+
+<div *ngIf="!loading" class="my-8 p-4 bg-gray-200 rounded-md w-3/4 mx-auto">
+    <dl>
+        <dt class="text-gray-600 font-medium text-2xl">Description</dt>
+        <dd>{{tutorial.description}}</dd>
+
+        <div class="mt-4 flex flex-col md:flex-row justify-evenly gap-4 md:gap-8">
+            <button (click)="changeTutorialStatus();" class="flex-1 px-6 py-2 rounded-md text-white font-medium drop-shadow-md" [ngClass]="{'bg-amber-500 hover:bg-amber-600': !tutorial.published, 'bg-teal-500 hover:bg-teal-600': tutorial.published}">{{tutorial.published ? "Published" : "No published"}}</button>
+            <button (click)="goToUpdateTutorialPage();" class="flex-1 px-6 py-2 rounded-md text-white font-medium drop-shadow-md bg-sky-500 hover:bg-sky-600">Update</button>
+            <button (click)="deleteTutorial();" class="flex-1 px-6 py-2 rounded-md text-white font-medium drop-shadow-md bg-red-400 hover:bg-red-500">Delete</button>
+        </div>
+    </dl>
+</div>

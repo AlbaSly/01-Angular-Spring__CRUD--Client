@@ -1,0 +1,20 @@
+<app-section-title title="Create Tutorial"></app-section-title>
+
+<form (submit)="onSubmit($event);" class="bg-gray-200 drop-shadow-lg p-4 w-1/2 mx-auto my-8 rounded-md gap-y-4" [formGroup]="createTutorialForm">
+
+    <div class="flex flex-col my-2 gap-y-1">
+        <label for="title" class="text-xl font-medium">Title</label>
+        <input formControlName="title" type="text" name="title" placeholder="Tutorial's Title" class="p-2 rounded-md text-orange-500 font-medium">
+        <p *ngIf="createTutorialForm.controls['title'].valid && createTutorialForm.controls['title'].touched" class="text-teal-700">Valid</p>
+        <p *ngIf="!createTutorialForm.controls['title'].valid && createTutorialForm.controls['title'].touched && createTutorialForm.controls['title'].getError('required')" class="text-red-500">Title is mandatory</p>
+        <p *ngIf="!createTutorialForm.controls['title'].valid && createTutorialForm.controls['title'].touched && createTutorialForm.controls['title'].getError('maxlaength')" class="text-red-500">Title can only contain 50 characters</p>
+    </div>
+    <div class="flex flex-col my-2 gap-y-1">
+        <label for="description" class="text-xl font-medium">Description</label>
+        <textarea formControlName="description" name="description" placeholder="Tutorial's Description" class="p-2 rounded-md text-orange-500 font-medium" rows="4"></textarea>
+        <p *ngIf="createTutorialForm.controls['description'].valid && createTutorialForm.controls['description'].touched" class="text-teal-700">Valid</p>
+        <p *ngIf="!createTutorialForm.controls['description'].valid && createTutorialForm.controls['description'].touched && createTutorialForm.controls['description'].getError('required')" class="text-red-500">Description is mandatory</p>
+    </div>
+
+    <button type="submit" [disabled]="!createTutorialForm.valid" class="mt-8 px-6 py-2 mx-auto block text-white font-medium text-lg rounded-md" [ngClass]="{'bg-orange-500 hover:bg-teal-500 hover:drop-shadow-lg hover:-translate-y-2': createTutorialForm.valid, 'bg-gray-400': !createTutorialForm.valid}">Create</button>
+</form>
